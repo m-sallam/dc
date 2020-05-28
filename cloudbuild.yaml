@@ -17,5 +17,6 @@ steps:
     - 'europe-west4'
     - '--platform'
     - 'managed'
+    - '--allow-unauthenticated'
 images:
   - 'gcr.io/$PROJECT_ID/$BRANCH_NAME:$COMMIT_SHA'
