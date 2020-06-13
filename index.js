@@ -1,14 +1,16 @@
-const express = require('express');
-const app = express();
+const { ApolloServer, PubSub } = require('apollo-server')
+const typeDefs = require('./typeDefs')
+const resolvers = require('./resolvers')
 
-app.get('/', (req, res) => {
-  console.log('Hello world received a request.');
+// should be replaced with an implementation suitable for production
+// see: https://www.apollographql.com/docs/apollo-server/data/subscriptions/#pubsub-implementations
+const pubSub = new PubSub()
 
-  const target = process.env.TARGET || 'World';
-  res.send(`Hello ${target}! v4`);
-});
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req, res }) => ({ req, res, pubSub })
+})
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log('Hello world listening on port', port);
-});
+server.listen(process.env.PORT || 5000).then(({ url }) => console.log(`Server ready at ${url}. `))
+
