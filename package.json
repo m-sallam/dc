@@ -1,14 +1,14 @@
 {
-  "name": "knative-serving-helloworld",
+  "name": "quix-poc-server",
   "version": "1.0.0",
-  "description": "Simple hello world sample in Node",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "author": "",
-  "license": "Apache-2.0",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "apollo-server": "^2.13.0"
   }
 }
