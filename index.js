@@ -12,5 +12,5 @@ const server = new ApolloServer({
   context: ({ req, res }) => ({ req, res, pubSub })
 })
 
-server.listen(5000).then(({ url }) => console.log(`Server ready at ${url}. `))
+server.listen(process.env.PORT || 5000).then(({ url }) => console.log(`Server ready at ${url}. `))
 
